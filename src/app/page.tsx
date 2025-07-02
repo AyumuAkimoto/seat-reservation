@@ -14,6 +14,8 @@ export default function Home() {
   const [seats, setSeats] = useState<Seat[]>(() => {
     // 4行6列の座席を生成
     const initialSeats: Seat[] = [];
+    let seatNumber = 1;
+    
     for (let row = 1; row <= 4; row++) {
       for (let col = 1; col <= 6; col++) {
         // ランダムな座席状態を生成（デモ用）
@@ -28,10 +30,12 @@ export default function Home() {
         }
         
         initialSeats.push({
-          id: `${row}-${col}`,
+          id: String(seatNumber),
           status: randomStatus,
           user
         });
+        
+        seatNumber++;
       }
     }
     return initialSeats;
